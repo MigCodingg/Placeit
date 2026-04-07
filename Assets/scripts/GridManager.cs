@@ -17,7 +17,8 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Color color;
     [SerializeField] private GameObject _boxPrefab;
     [SerializeField] private GameObject _playerPrefab;
-
+    [SerializeField] private List<Vector2> _trapPositions;
+    [SerializeField] private GameObject _trapPrefab;
     [SerializeField] private Vector2 _playerStartPos = new Vector2(0, 0);
 
     [SerializeField] private List<BoxData> _boxesData;
@@ -34,8 +35,13 @@ public class GridManager : MonoBehaviour
     {
         _tiles = new Dictionary<Vector2, Tile>();
         _boxes = new Dictionary<Vector2, GameObject>();
+        // 🕳 Spawn trap tiles
+        foreach (var pos in _trapPositions)
+        {
+            if (_trapPrefab != null)
+                Instantiate(_trapPrefab, pos, Quaternion.identity);
+        }
 
-       
         for (int x = 0; x < _width; x++)
         {
             for (int y = 0; y < _height; y++)
@@ -88,12 +94,28 @@ public class GridManager : MonoBehaviour
         return null;
     }
 
+    public bool IsTrapPosition(Vector2 pos)
+    {
+        return _trapPositions.Contains(pos);
+    }
+
     public void MoveBox(Vector2 from, Vector2 to)
     {
         if (_boxes.TryGetValue(from, out var box))
         {
             _boxes.Remove(from);
-            _boxes[to] = box;
+
+            // 🕳 If it's a trap → destroy box
+            if (IsTrapPosition(to))
+            {
+                Destroy(box);
+            }
+            else
+            {
+                _boxes[to] = box;
+            }
+
+          
         }
     }
 }
