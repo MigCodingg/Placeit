@@ -49,12 +49,6 @@ public class Box : MonoBehaviour
 
         int remaining = _maxPushes - _pushCount;
         m_TextComponent.text = remaining.ToString();
-
-        
-       
-        if (remaining <= 1)
-            m_TextComponent.color = Color.red;
-        else
-            m_TextComponent.color = Color.white;
+        m_TextComponent.color = Color.white;
     }
 }
