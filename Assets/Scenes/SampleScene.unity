@@ -608,10 +608,10 @@ MonoBehaviour:
   _boxesData:
   - position: {x: 2, y: 2}
     maxPushes: 3
-    color: {r: 0, g: 0, b: 0, a: 1}
+    color: {r: 1, g: 0.3726415, b: 0.3726415, a: 1}
   - position: {x: 2, y: 3}
     maxPushes: 2
-    color: {r: 0, g: 0, b: 0, a: 1}
+    color: {r: 1, g: 0.9512394, b: 0.6273585, a: 1}
 --- !u!4 &1606856441
 Transform:
   m_ObjectHideFlags: 0
