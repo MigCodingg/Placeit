@@ -9,10 +9,12 @@ public class GridManager : MonoBehaviour
     {
     public Vector2 position;
     public int maxPushes;
+    public Color color;
     }
     [SerializeField] private int _width, _height;
 
     [SerializeField] private Tile _tilePrefab;
+    [SerializeField] private Color color;
     [SerializeField] private GameObject _boxPrefab;
     [SerializeField] private GameObject _playerPrefab;
 
@@ -33,7 +35,7 @@ public class GridManager : MonoBehaviour
         _tiles = new Dictionary<Vector2, Tile>();
         _boxes = new Dictionary<Vector2, GameObject>();
 
-        // 🔲 Generate tiles
+       
         for (int x = 0; x < _width; x++)
         {
             for (int y = 0; y < _height; y++)
@@ -50,31 +52,31 @@ public class GridManager : MonoBehaviour
 
        foreach (var boxData in _boxesData)
         {
-            SpawnBox(boxData.position, boxData.maxPushes);
+            SpawnBox(boxData.position, boxData.maxPushes, boxData.color);
         }
 
-        // 🧍 Spawn player
+        // 🧍
         Instantiate(_playerPrefab, _playerStartPos, Quaternion.identity);
     }
 
-    void SpawnBox(Vector2 pos, int maxPushes)
-        {
-    var boxObj = Instantiate(_boxPrefab, pos, Quaternion.identity);
+    void SpawnBox(Vector2 pos, int maxPushes, Color color)
+    {
+        var boxObj = Instantiate(_boxPrefab, pos, Quaternion.identity);
 
-    var box = boxObj.GetComponent<Box>();
-    box.SetMaxPushes(maxPushes);
+        var box = boxObj.GetComponent<Box>();
+        box.SetMaxPushes(maxPushes);
+        box.SetColor(color);
 
-    _boxes[pos] = boxObj;
-        }
+        _boxes[pos] = boxObj;
+    }
 
-    // 🔍 Tile checks
+
     public Tile GetTileAtPosition(Vector2 pos)
     {
         if (_tiles.TryGetValue(pos, out var tile)) return tile;
         return null;
     }
 
-    // 📦 Box checks
     public bool HasBoxAtPosition(Vector2 pos)
     {
         return _boxes.ContainsKey(pos);

@@ -27,7 +27,18 @@ public class PlayerController : MonoBehaviour
             moveDir = Vector2.right;
 
         if (moveDir != Vector2.zero)
+        {
+            RotateSprite(moveDir); 
             TryMove(moveDir);
+        }
+    }
+
+    void RotateSprite(Vector2 dir)
+    {
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+
+       
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     void TryMove(Vector2 direction)
@@ -35,39 +46,39 @@ public class PlayerController : MonoBehaviour
         Vector2 currentPos = Vector2Int.RoundToInt(transform.position);
         Vector2 targetPos = currentPos + direction;
 
-        // 🚫 Block if outside grid
+       
         if (_gridManager.GetTileAtPosition(targetPos) == null)
             return;
 
-       // 📦 If there's a box → try pushing
+        
         if (_gridManager.HasBoxAtPosition(targetPos))
         {
             var boxObj = _gridManager.GetBoxAtPosition(targetPos);
-           var box = boxObj.GetComponent<Box>();
+            var box = boxObj.GetComponent<Box>();
 
-                // 🚫 Check push limit
+          
             if (!box.CanBePushed())
-            return;
+                return;
 
             Vector2 boxTargetPos = targetPos + direction;
 
-            // 🚫 Can't push outside grid
+           
             if (_gridManager.GetTileAtPosition(boxTargetPos) == null)
                 return;
 
-            // 🚫 Can't push into another box
+          
             if (_gridManager.HasBoxAtPosition(boxTargetPos))
                 return;
 
-            // ✅ Move box
+           
             boxObj.transform.position = boxTargetPos;
 
-            box.RegisterPush(); // 🔥 count the push
+            box.RegisterPush(); 
 
             _gridManager.MoveBox(targetPos, boxTargetPos);
-}
+        }
 
-        // ✅ Move player
+        
         transform.position = new Vector3(targetPos.x, targetPos.y, transform.position.z);
     }
 }
