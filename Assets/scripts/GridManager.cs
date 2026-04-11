@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GridManager : MonoBehaviour
 {
 
@@ -23,8 +23,18 @@ public class GridManager : MonoBehaviour
 
     [SerializeField] private List<BoxData> _boxesData;
 
+    [SerializeField] private List<GoalData> _goalsData;
+    [SerializeField] private Color _goalColor = Color.green;
+
     private Dictionary<Vector2, Tile> _tiles;
     private Dictionary<Vector2, GameObject> _boxes;
+
+        [System.Serializable]
+    public class GoalData
+    {
+        public Vector2 position;
+        public Color color;
+    }
 
     void Start()
     {
@@ -35,13 +45,15 @@ public class GridManager : MonoBehaviour
     {
         _tiles = new Dictionary<Vector2, Tile>();
         _boxes = new Dictionary<Vector2, GameObject>();
-        // 🕳 Spawn trap tiles
+
+        // 🕳 Spawn traps
         foreach (var pos in _trapPositions)
         {
             if (_trapPrefab != null)
                 Instantiate(_trapPrefab, pos, Quaternion.identity);
         }
 
+        // 🔲 Generate tiles
         for (int x = 0; x < _width; x++)
         {
             for (int y = 0; y < _height; y++)
@@ -56,12 +68,22 @@ public class GridManager : MonoBehaviour
             }
         }
 
-       foreach (var boxData in _boxesData)
+        
+        foreach (var goal in _goalsData)
+    {
+        if (_tiles.TryGetValue(goal.position, out var tile))
+        {
+            tile.SetColor(goal.color);
+        }
+    }
+
+        // 📦 Spawn boxes
+        foreach (var boxData in _boxesData)
         {
             SpawnBox(boxData.position, boxData.maxPushes, boxData.color);
         }
 
-        // 🧍
+        // 🧍 Spawn player
         Instantiate(_playerPrefab, _playerStartPos, Quaternion.identity);
     }
 
@@ -99,13 +121,22 @@ public class GridManager : MonoBehaviour
         return _trapPositions.Contains(pos);
     }
 
-    public void MoveBox(Vector2 from, Vector2 to)
+        public bool AreAllGoalsFilled()
+    {
+        foreach (var goal in _goalsData)
+        {
+            if (!_boxes.ContainsKey(goal.position))
+                return false;
+        }
+        return true;
+    }
+        public void MoveBox(Vector2 from, Vector2 to)
     {
         if (_boxes.TryGetValue(from, out var box))
         {
             _boxes.Remove(from);
 
-            // 🕳 If it's a trap → destroy box
+            // 🕳 Trap check
             if (IsTrapPosition(to))
             {
                 Destroy(box);
@@ -115,7 +146,16 @@ public class GridManager : MonoBehaviour
                 _boxes[to] = box;
             }
 
-          
+           
+            if (AreAllGoalsFilled())
+            {
+                LoadNextScene();
+            }
         }
+    }
+        void LoadNextScene()
+    {
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentIndex + 1);
     }
 }

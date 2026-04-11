@@ -13,5 +13,9 @@ public class Tile : MonoBehaviour
         _renderer.color = isOffset ? _offsetColor : _baseColor;
     }
 
+    public void SetColor(Color color)
+    {
+        GetComponent<SpriteRenderer>().color = color;
+    }
    
 }
