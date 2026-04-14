@@ -489,7 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   textComponent: {fileID: 764292785}
   lines:
-  - Good job on this first level!
+  - 'Amazing! '
   - as you can see you have to be carefull with where you push the box!
   - This next level is going to be the hardest one!
   - I hope you enjoy the last level we have for you!
