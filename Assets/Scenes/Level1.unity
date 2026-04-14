@@ -225,14 +225,14 @@ RectTransform:
   m_GameObject: {fileID: 539591676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.8049674, y: 1.8049674, z: 1.8049674}
+  m_LocalScale: {x: 1.4382114, y: 1.4382114, z: 1.4382114}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2002074575}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -705, y: -442}
+  m_AnchoredPosition: {x: -322.8, y: -345.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539591678
@@ -595,8 +595,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.4918, y: 7.1298}
-  m_SizeDelta: {x: 99.846, y: 99.79}
+  m_AnchoredPosition: {x: 9.1268, y: 7.1298}
+  m_SizeDelta: {x: 99.3657, y: 99.7928}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &897134639
 MonoBehaviour:
@@ -795,7 +795,7 @@ Transform:
   m_GameObject: {fileID: 1331277192}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.3000002, y: 3.06, z: -10}
+  m_LocalPosition: {x: 0.29, y: 3.06, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -926,7 +926,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1994187520}
   - component: {fileID: 1994187519}
-  - component: {fileID: 1994187521}
   m_Layer: 0
   m_Name: 221-2213406_bezel-nintendo-ds-nintendo-ds-lite-png-transparent (2)_Nero_AI_Image_Upscaler_Photo_Face_0
   m_TagString: Untagged
@@ -980,7 +979,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5629
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2297760766326316257, guid: 06ddd6037c22898479af0c61e852ddd0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1001,34 +1000,12 @@ Transform:
   m_GameObject: {fileID: 1994187518}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.43, y: 2.72, z: 0}
+  m_LocalPosition: {x: 0.15999997, y: 7.32, z: 0}
   m_LocalScale: {x: 0.595669, y: 0.58114046, z: 0.58114046}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1994187521
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994187518}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9abd59c796436f04c996434387501781, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2002074570
 GameObject:
   m_ObjectHideFlags: 0
