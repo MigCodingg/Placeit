@@ -6,7 +6,8 @@ public class Mainmenu1 : MonoBehaviour
     public void Playgame()
     {
 
-        SceneManager.LoadScene("Level1");
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentIndex + 1);
     }
 
     public void ExitGame()
