@@ -1,12 +1,23 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Mainmenu : MonoBehaviour
 {
+    public float delay = 0f; 
+
     public void Playgame()
     {
+        
+        StartCoroutine(LoadNextScene());
+    }
 
-        SceneManager.LoadScene("intro1");
+    IEnumerator LoadNextScene()
+    {
+        yield return new WaitForSeconds(delay);
+
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentIndex + 1);
     }
 
     public void ExitGame()
@@ -14,5 +25,4 @@ public class Mainmenu : MonoBehaviour
         Debug.Log("Ha salido del juego");
         Application.Quit();
     }
-   
 }
