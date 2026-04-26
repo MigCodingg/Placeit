@@ -734,7 +734,6 @@ MonoBehaviour:
   _width: 9
   _height: 9
   _tilePrefab: {fileID: 3966800510900680740, guid: 2fa7f7fa20585a644869344e000e9821, type: 3}
-  color: {r: 0, g: 0, b: 0, a: 0}
   _boxPrefab: {fileID: 6511630680783448064, guid: 0aeebdf29a8934b4ead8adf4a7d7f7c5, type: 3}
   _playerPrefab: {fileID: 1391317838447353804, guid: af4cfe9ba31cebf4a8cfd6c5073f7037, type: 3}
   _trapPositions:
@@ -805,7 +804,8 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 0.5882353}
   - position: {x: 2, y: 0}
     color: {r: 0, g: 0, b: 0, a: 0.5882353}
-  _goalColor: {r: 0, g: 0, b: 0, a: 1}
+  _goalSound: {fileID: 8300000, guid: 34dd4da485d438c4ea0b4ec5887a6744, type: 3}
+  _trapSound: {fileID: 8300000, guid: 61dab7bf0629df2478680ff9c71e6e56, type: 3}
 --- !u!4 &1606856441
 Transform:
   m_ObjectHideFlags: 0
