@@ -489,12 +489,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   textComponent: {fileID: 764292785}
   lines:
-  - 'Amazing! '
-  - as you can see you have to be carefull with where you push the box!
-  - This next level is going to be the hardest one!
-  - I hope you enjoy the last level we have for you!
-  - I hope it brings a smile to your face :)
-  - When you are ready press the A button!
+  - You did It!
+  - We hope you enjoyed all the levels we have created for you!
+  - Thank you for playing this game and we hope to see you next time
+  - You can now exit the game, Thank you!
   textSpeed: 0.05
   lineDelay: 5
 --- !u!114 &764292785
